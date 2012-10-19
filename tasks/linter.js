@@ -28,7 +28,7 @@ module.exports = function (grunt) {
 
 	var isJSLint,
 		templates = {},
-		options = conf('options');
+		options = conf('options') || {};
 
 	filepath = options.linter || filepath;
 

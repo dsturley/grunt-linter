@@ -109,6 +109,7 @@ module.exports = function (grunt) {
 
 
 ## Release History
+* 0.1.1 - Made `options` optional
 * 0.1.0 - Forked from grunt-jslint; first release
 
 ## License
