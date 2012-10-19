@@ -1,0 +1,47 @@
+{
+	"name": "grunt-linter",
+	"description": "Validates JavaScript files with JSLint or JSHint",
+	"version": "0.1.0",
+	"homepage": "https://github.com/circusbred/grunt-linter",
+	"contributors": [
+		{
+			"name": "Stephen Mathieson",
+			"email": "me@stephenmathieson.com"
+		},
+		{
+			"name": "David Sturley",
+			"url": "https://github.com/circusbred"
+		},
+	],
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/circusbred/grunt-linter.git"
+	},
+	"bugs": {
+		"url": "https://github.com/circusbred/grunt-linter/issues"
+	},
+	"licenses": [
+		{
+			"type": "WTFPL",
+			"url": "https://github.com/circusbred/grunt-linter/blob/master/LICENSE-WTFPL"
+		}
+	],
+	"main": "grunt.js",
+	"bin": "bin/grunt-linter",
+	"engines": {
+		"node": "*"
+	},
+	"dependencies": {
+		"grunt": "~0.3.11"
+	},
+	"devDependencies": {
+		"grunt": "~0.3.11"
+	},
+	"keywords": [
+		"gruntplugin",
+		"jslint",
+		"lint",
+		"jshint",
+		"code quality"
+	]
+}
