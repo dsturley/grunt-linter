@@ -112,5 +112,5 @@ module.exports = function (grunt) {
 * 0.1.0 - Forked from grunt-jslint; first release
 
 ## License
-Copyright (c) 2012 Stephen Mathieson
-Licensed under the WTFPL license.
+Copyright (c) 2012 David Sturley, Stephen Mathieson
+Licensed under the MIT license.
