@@ -29,10 +29,10 @@ module.exports = function (grunt) {
 				white: true
 			},
 			options: {
+				//linter: '/Users/davidsturley/jslint.js',
 				junit: 'out/junit.xml',
 				log: 'out/lint.log',
-				errorsOnly: false/*,
-				linter: '/Users/davidsturley/jslint.js' */
+				errorsOnly: false
 
 			},
 			// superfluous; node:true sets this too
