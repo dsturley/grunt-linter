@@ -2,26 +2,26 @@
  * grunt-jslint
  * https://github.com/stephenmathieson/grunt-jslint
  *
- * Copyright (c) 2012 Stephen Mathieson
- * Licensed under the WTFPL license.
+ * Copyright (c) 2012 David Sturley, Stephen Mathieson
+ * Licensed under the MIT license.
  */
 
-/**
- * Grabs a config option from the jslint namespace
- *
- * @param  {String} option The option/configuration key
- * @return {Mixed|Any}     The key's value
- */
+/*jslint node:true, nomen:true*/
 
 var linter,
 	vm = require('vm'),
-	fs = require('fs'),
 	ctx = vm.createContext(),
 	filepath = __dirname + '/../lib/jshint/src/stable/jshint.js';
 
 module.exports = function (grunt) {
 	'use strict';
 
+	/**
+	 * Grabs a config option from the `linter` namespace
+	 *
+	 * @param  {String} option The option/configuration key
+	 * @return {Mixed|Any}     The key's value
+	 */
 	function conf(option) {
 		return grunt.config('linter.' + option);
 	}
@@ -32,7 +32,7 @@ module.exports = function (grunt) {
 
 	filepath = options.linter || filepath;
 
-	vm.runInContext(fs.readFileSync(filepath), ctx);
+	vm.runInContext(grunt.file.read(filepath), ctx);
 
 	linter = ctx.JSLINT || ctx.JSHINT;
 	isJSLint = linter === ctx.JSLINT;
@@ -70,8 +70,6 @@ module.exports = function (grunt) {
 		});
 
 		files.forEach(function (filepath, index) {
-
-
 			var source = grunt.file.read(filepath),
 				passed = linter(source, directives, globals),
 				errors = linter.errors;
