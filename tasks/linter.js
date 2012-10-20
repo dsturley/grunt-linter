@@ -1,6 +1,6 @@
 /*!
- * grunt-jslint
- * https://github.com/stephenmathieson/grunt-jslint
+ * grunt-linter
+ * https://github.com/circusbred/grunt-linter
  *
  * Copyright (c) 2012 David Sturley, Stephen Mathieson
  * Licensed under the MIT license.
