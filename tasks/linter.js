@@ -44,9 +44,9 @@ module.exports = function (grunt) {
 		jshintrc = grunt.file.readJSON(jshintrc);
 
 		if (jshintrc) {
-			if (jshintrc.global) {
-				globals = jshintrc.global;
-				delete jshintrc.global;
+			if (jshintrc.globals) {
+				globals = jshintrc.globals;
+				delete jshintrc.globals;
 			}
 
 			directives = jshintrc;
