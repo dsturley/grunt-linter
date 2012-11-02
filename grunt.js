@@ -1,4 +1,5 @@
-/*jslint node: true */
+
+
 module.exports = function (grunt) {
 	'use strict';
 
@@ -15,7 +16,16 @@ module.exports = function (grunt) {
 				'grunt.js',
 				'tasks/linter.js'
 			],
-			directives: { // some example JSHint directives
+			options: {
+				//linter: '/Users/davidsturley/jslint.js',
+				junit: 'out/junit.xml',
+				log: 'out/lint.log',
+				errorsOnly: false
+
+			},
+
+			// if .jshintrc is found in pwd or above, it will override all of these directives
+			directives: {
 				node: true,
 				forin: true,
 				noarg: true,
@@ -27,13 +37,6 @@ module.exports = function (grunt) {
 				unused: true,
 				curly: true,
 				white: true
-			},
-			options: {
-				//linter: '/Users/davidsturley/jslint.js',
-				junit: 'out/junit.xml',
-				log: 'out/lint.log',
-				errorsOnly: false
-
 			},
 			// superfluous; node:true sets this too
 			globals: {

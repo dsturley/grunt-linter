@@ -6,8 +6,6 @@
  * Licensed under the MIT license.
  */
 
-/*jslint node:true, nomen:true*/
-
 var linter,
 	vm = require('vm'),
 	ctx = vm.createContext(),
@@ -26,7 +24,7 @@ module.exports = function (grunt) {
 		return grunt.config('linter.' + option);
 	}
 
-	var isJSLint,
+	var isJSLint, jshintrc, directives, globals,
 		templates = {},
 		options = conf('options') || {};
 
@@ -41,19 +39,34 @@ module.exports = function (grunt) {
 	templates.errors_only = grunt.file.read(__dirname + '/templates/errors-only.tmpl');
 	templates.junit = grunt.file.read(__dirname + '/templates/junit.tmpl');
 
+	jshintrc = grunt.file.findup('.', '.jshintrc');
+	if (jshintrc) {
+		jshintrc = grunt.file.readJSON(jshintrc);
+
+		if (jshintrc) {
+			if (jshintrc.globals) {
+				globals = jshintrc.globals;
+				delete jshintrc.globals;
+			}
+
+			directives = jshintrc;
+		}
+	}
+
 	grunt.registerTask('linter', 'Your task description goes here.', function () {
 
 		var template,
 			files = conf('files'),
 			excludedFiles = conf('exclude') || [],
-			options = conf('options') || {},
-			directives = conf('directives') || {},
-			globals = conf('globals') || {},
 			filesInViolation = 0,
 			errorCount = 0,
 			report = {
 				files: []
 			};
+
+
+		directives = directives || conf('directives') || {};
+		globals = globals || conf('globals') || {};
 
 		if (!files) {
 			grunt.log.error('NO FILES?!?');
