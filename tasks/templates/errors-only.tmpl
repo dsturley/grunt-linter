@@ -8,10 +8,12 @@
 		}
 
 		file.errors.forEach(function(error, index) {
-			print((file.filepath + ':' + error.line).red);
-			print((error.character ? ':' + error.character : '').red + '\t');
-			print(error.reason ? error.reason : 'Unused variable `' + error.name + '`');
-			print('\n');
+			if (error) {
+				print((file.filepath + ':' + error.line).red);
+				print((error.character ? ':' + error.character : '').red + '\t');
+				print(error.reason ? error.reason : 'Unused variable `' + error.name + '`');
+				print('\n');
+			}
 		});
 	});
 
