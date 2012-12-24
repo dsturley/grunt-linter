@@ -24,11 +24,27 @@ module.exports = function (grunt) {
 		return grunt.config('linter.' + option);
 	}
 
-	var isJSLint, jshintrc, directives, globals,
+	var underscore, isJSLint, jshintrc, directives, globals,
 		templates = {},
 		options = conf('options') || {};
 
 	filepath = options.linter || filepath;
+
+	/**
+	 * Fetch underscore (lodash?) from the grunt utils namespace.  The namespace
+	 * changed from 0.3.x to 0.4.x, so we're checking for both.
+	 */
+	underscore = (function () {
+
+		// 0.4.x
+		if (grunt.util && grunt.util._) {
+			return grunt.util._;
+		}
+
+		// 0.3.x
+		return grunt.utils._;
+
+	}());
 
 	vm.runInContext(grunt.file.read(filepath), ctx);
 
@@ -104,9 +120,15 @@ module.exports = function (grunt) {
 		report.filesInViolation = filesInViolation;
 
 		if (options.errorsOnly) {
-			template = grunt.template.process(templates.errors_only, report);
+			// use underscore for templating directly rather than relying on
+			// grunt's impl of it
+			template = underscore.template(templates.errors_only, {
+				'obj': report
+			});
 		} else {
-			template = grunt.template.process(templates.standard, report);
+			template = underscore.template(templates.standard, {
+				'obj': report
+			});
 		}
 
 		grunt.log.write(template);
@@ -116,8 +138,9 @@ module.exports = function (grunt) {
 		}
 
 		if (options.junit) {
-			template = grunt.template.process(templates.junit, report);
-
+			template = underscore.template(templates.junit, {
+				'obj': report
+			});
 			grunt.file.write(options.junit, template);
 		}
 
