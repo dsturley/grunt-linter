@@ -14,6 +14,7 @@ var linter,
 module.exports = function (grunt) {
 	'use strict';
 
+
 	/**
 	 * Grabs a config option from the `linter` namespace
 	 *
@@ -25,6 +26,8 @@ module.exports = function (grunt) {
 	}
 
 	var underscore, isJSLint, jshintrc, directives, globals,
+		// are we stupid? changing APIs/namespaces and not documenting them is pretty fucking cool
+		isStupid = false,
 		templates = {},
 		options = conf('options') || {};
 
@@ -38,6 +41,7 @@ module.exports = function (grunt) {
 
 		// 0.4.x
 		if (grunt.util && grunt.util._) {
+			isStupid = true;
 			return grunt.util._;
 		}
 
@@ -55,7 +59,15 @@ module.exports = function (grunt) {
 	templates.errors_only = grunt.file.read(__dirname + '/templates/errors-only.tmpl');
 	templates.junit = grunt.file.read(__dirname + '/templates/junit.tmpl');
 
-	jshintrc = grunt.file.findup('.', '.jshintrc');
+
+	if (isStupid) {
+		jshintrc = grunt.file.findup('.jshintrc');
+
+	} else {
+		jshintrc = grunt.file.findup('.', '.jshintrc');
+
+	}
+
 	if (jshintrc) {
 		jshintrc = grunt.file.readJSON(jshintrc);
 
