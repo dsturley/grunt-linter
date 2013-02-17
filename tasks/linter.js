@@ -104,9 +104,9 @@ module.exports = function (grunt) {
 			directives.predef = Object.keys(globals);
 		}
 
-		excludedFiles = grunt.file.expandFiles(excludedFiles);
+		excludedFiles = grunt.file.expand(excludedFiles);
 
-		files = grunt.file.expandFiles(files).filter(function (file) {
+		files = grunt.file.expand(files).filter(function (file) {
 			return excludedFiles.indexOf(file) === -1;
 		});
 
