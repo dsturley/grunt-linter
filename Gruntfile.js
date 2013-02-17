@@ -13,7 +13,8 @@ module.exports = function (grunt) {
 
 		linter: {
 			files: [ // some example files
-				'*/**.js'
+				'*.js',
+				'tasks/**/*.js'
 			],
 			options: {
 				//linter: '/Users/davidsturley/jslint.js',

@@ -109,6 +109,7 @@ module.exports = function (grunt) {
 
 
 ## Release History
+* 0.3.0 - Removed Grunt 0.3.x support, updated to JSHint 1.0.0 and improved .jshintrc support. `/*exported` directive is now supported!
 * 0.2.1 - Actual Grunt 0.4.0 support (expandFiles issue)
 * 0.2.0 - Grunt 0.4.0 support.
 * 0.1.2 - Added `.jshintrc` support. [Example .jshintrc](https://github.com/circusbred/grunt-linter/blob/master/.jshintrc)

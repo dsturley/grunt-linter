@@ -1,7 +1,7 @@
 {
 	"name": "grunt-linter",
 	"description": "Validates JavaScript files with JSLint or JSHint",
-	"version": "0.2.1",
+	"version": "0.3.0",
 	"homepage": "https://github.com/circusbred/grunt-linter",
 	"contributors": [
 		{
@@ -32,7 +32,8 @@
 		"node": "*"
 	},
 	"dependencies": {
-		"grunt": "~0.4.0"
+		"grunt": "~0.4.0",
+		"underscore": "*"
 	},
 	"devDependencies": {
 		"grunt": "~0.4.0"
