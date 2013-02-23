@@ -33,7 +33,7 @@
 	},
 	"dependencies": {
 		"grunt": "~0.4.0",
-		"underscore": "*"
+		"jshint": "~1.0.0"
 	},
 	"devDependencies": {
 		"grunt": "~0.4.0"

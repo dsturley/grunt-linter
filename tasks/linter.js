@@ -5,12 +5,10 @@
  * Copyright (c) 2012 David Sturley, Stephen Mathieson
  * Licensed under the MIT license.
  */
-
 var linter,
 	vm = require('vm'),
 	path = require('path'),
-	ctx = vm.createContext(),
-	filepath = __dirname + '/../lib/jshint/src/stable/jshint.js';
+	ctx = vm.createContext();
 
 module.exports = function (grunt) {
 	'use strict';
@@ -38,7 +36,7 @@ module.exports = function (grunt) {
 		linter = ctx.JSLINT || ctx.JSHINT;
 		isJSLint = linter === ctx.JSLINT;
 	} else {
-		linter = require(require.resolve(filepath)).JSHINT;
+		linter = require('jshint').JSHINT;
 	}
 
 	templates.standard = grunt.file.read(__dirname + '/templates/standard.tmpl');
