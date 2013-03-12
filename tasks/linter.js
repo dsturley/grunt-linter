@@ -26,18 +26,12 @@ module.exports = function (grunt) {
 
 	var underscore, isJSLint, jshintrc, directives, globals,
 		templates = {},
-		options = conf('options') || {};
+		
 
 	underscore = grunt.util._;
 
-	if (options.linter) {
-		vm.runInContext(grunt.file.read(options.linter), ctx);
-
-		linter = ctx.JSLINT || ctx.JSHINT;
-		isJSLint = linter === ctx.JSLINT;
-	} else {
-		linter = require('jshint').JSHINT;
-	}
+	 
+	
 
 	templates.standard = grunt.file.read(__dirname + '/templates/standard.tmpl');
 	templates.errors_only = grunt.file.read(__dirname + '/templates/errors-only.tmpl');
@@ -52,9 +46,19 @@ module.exports = function (grunt) {
 			errorCount = 0,
 			report = {
 				files: []
-			};
+			},
+			options = conf('options') || {};
 
+		if (options.linter) {
+				vm.runInContext(grunt.file.read(options.linter), ctx);
 
+				linter = ctx.JSLINT || ctx.JSHINT;
+				isJSLint = linter === ctx.JSLINT;
+			} else {
+				 linter = require('jshint').JSHINT;
+			}
+			
+			
 		directives = directives || conf('directives') || {};
 		globals = globals || conf('globals') || {};
 
