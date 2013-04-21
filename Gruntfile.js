@@ -38,7 +38,7 @@ module.exports = function (grunt) {
 				curly: true,
 				white: true
 			},
-			// superfluous; node:true sets this too
+
 			globals: {
 				require: true,
 				module: true
@@ -47,10 +47,7 @@ module.exports = function (grunt) {
 
 	});
 
-	// Load local tasks.
 	grunt.loadTasks('./tasks');
-
-	// Default task.
 	grunt.registerTask('default', 'linter');
 
 };
