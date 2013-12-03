@@ -92,7 +92,7 @@ module.exports = function (grunt) {
 			},
 			globals: {
 				jQuery: true
-			}
+			},
 			options: {
 				junit: 'out/junit.xml', // write the output to a JUnit XML
 				log: 'out/lint.log',
