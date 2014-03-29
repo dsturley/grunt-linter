@@ -1,4 +1,4 @@
-# grunt-jslint
+# grunt-linter
 
 Validates JavaScript files with [JSHint](https://github.com/jshint/jshint) or [JSLint](https://github.com/douglascrockford/JSLint) as a [grunt](https://github.com/cowboy/grunt) task.  JSHint is bundled with the plugin.
 
@@ -109,6 +109,8 @@ module.exports = function (grunt) {
 
 
 ## Release History
+* 0.3.3 - JSHint updated to 2.4.x
+* 0.3.2 - JSHint updated to 1.1.x
 * 0.3.1 - JSHint 1.0.0 released on npm. Removed JSHint submodule and replaced with an npm dependency.
 * 0.3.0 - Removed Grunt 0.3.x support, updated to JSHint 1.0.0 and improved .jshintrc support. `/*exported` directive is now supported!
 * 0.2.1 - Actual Grunt 0.4.0 support (expandFiles issue)
